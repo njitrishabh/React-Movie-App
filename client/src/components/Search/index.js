@@ -1,26 +1,15 @@
 import React from 'react';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import { TextField } from '@mui/material';
 import { Grid, FormHelperText } from '@mui/material';
-import axios from "axios";
 import styles from './search.css';
 const serverURL = "http://localhost:5001";
 const Search = () => {
-    const navigate = useNavigate();
 
     const [enteredTitle, handleTitleChange] = React.useState('');
     const [actorName, handleActorNameChange] = React.useState('');
     const [directorName, handleDirectorNameChange] = React.useState('');
     const [responseData, setResponseData] = React.useState([]);
-
-
 
     const handleInput1 = (event) => {
         handleTitleChange(event.target.value);
@@ -70,57 +59,6 @@ const Search = () => {
 
     return (
         <div>
-
-            <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" sx={{ backgroundColor: 'black' }}>
-                    <Toolbar>
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            sx={{ mr: 2 }}
-                        >
-                        </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Search Page
-                        </Typography>
-
-
-                        <Link
-                            color="inherit"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => navigate('/')}
-                        >
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Landing Page
-                            </Typography>
-                        </Link>
-
-
-                        <Link
-                            color="inherit"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => navigate('/Review')}
-                        >
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Review Page
-                            </Typography>
-                        </Link>
-
-
-                        <Link
-                            color="inherit"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => navigate('/FindTrailer')}
-                        >
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Find Trailer
-                            </Typography>
-                        </Link>
-                    </Toolbar>
-                </AppBar>
-            </Box>
 
             <div className='flex-container'>
                 <TextField

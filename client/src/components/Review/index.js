@@ -1,11 +1,5 @@
 import React from 'react';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import ReviewTitle from './ReviewTitle';
 import ReviewBody from './ReviewBody';
 import ReviewRating from './ReviewRating';
@@ -14,7 +8,6 @@ import { FormControl, Grid, Select, MenuItem, InputLabel, FormHelperText, Button
 const serverURL = "http://localhost:5001";
 
 const Review = () => {
-  const navigate = useNavigate();
 
   const [movies, setMovies] = React.useState([]);
   const [userID, setUserID] = React.useState(1);
@@ -137,60 +130,7 @@ const Review = () => {
   return (
 
     <div>
-
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ backgroundColor: 'black' }}>
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Review Page
-            </Typography>
-
-
-            <Link
-              color="inherit"
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate('/')}
-            >
-              <Typography variant="h6" color="inherit" noWrap>
-                Landing Page
-              </Typography>
-            </Link>
-
-
-            <Link
-              color="inherit"
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate('/Search')}
-            >
-              <Typography variant="h6" color="inherit" noWrap>
-                Search Page
-              </Typography>
-            </Link>
-
-
-            <Link
-              color="inherit"
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate('/FindTrailer')}
-            >
-              <Typography variant="h6" color="inherit" noWrap>
-                Find Trailer
-              </Typography>
-            </Link>
-          </Toolbar>
-        </AppBar>
-      </Box>
-
       <>
-        {/* JSX block */}
 
         <form onSubmit={handleChange}>
           <Grid

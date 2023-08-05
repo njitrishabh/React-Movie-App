@@ -1,0 +1,14 @@
+.MuiTypography-root {
+    padding-left: 20px;
+    color: white;
+}
+
+.activeRoute {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
