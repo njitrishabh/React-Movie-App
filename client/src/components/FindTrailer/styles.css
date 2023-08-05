@@ -1,0 +1,30 @@
+input[type=text],
+select {
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+input[type=submit] {
+    background-color: #1976d2;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form,
+.form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: fit-content;
+    padding-left: 20px;
+    padding-top: 40px;
+}
+
+.fetchTrailer {
+    padding-left: 20px;
+    margin-top: 100px;
+}
