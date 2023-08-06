@@ -1,20 +1,44 @@
 import React from 'react';
+import { useReducer } from 'react';
 import Button from '@mui/material/Button';
-import { TextField } from '@mui/material';
+import { Switch, TextField } from '@mui/material';
 import { Grid, FormHelperText } from '@mui/material';
 import styles from './styles.css';
 
 const serverURL = "http://localhost:5001";
+
+function reducer(stateTitle, action) {
+    switch (action.type) {
+        case 'entered_title': {
+            return {
+                name: action.nextName
+            };
+        }
+        case 'clear_textbox': {
+            return {
+                ...stateTitle,
+                name: ''
+            };
+        }
+        default: {
+            throw Error('Unknown action: ' + action.type);
+        }
+    }
+}
+
 const MyPage = () => {
 
-    const [enteredTitle, handleTitleChange] = React.useState('');
+    const [stateTitle, dispatch] = useReducer(reducer, []);
     const [responseData, setResponseData] = React.useState([]);
 
     const [movieTitle, setmovieTitle] = React.useState([]);
     const [movieTrailer, setmovieTrailer] = React.useState([]);
 
     const handleInput1 = (event) => {
-        handleTitleChange(event.target.value);
+        dispatch({
+            type: 'entered_title',
+            nextName: event.target.value
+        });
     }
 
 
@@ -22,7 +46,9 @@ const MyPage = () => {
     const handleChange = (event) => {
         event.preventDefault();
         getTrailers();
-        handleTitleChange('');
+        dispatch({
+            type: 'clear_textbox'
+        })
     }
 
     const getTrailers = () => {
@@ -44,7 +70,7 @@ const MyPage = () => {
 
             body: JSON.stringify({
 
-                movieTitle: enteredTitle,
+                movieTitle: stateTitle.name,
             }),
         });
 
@@ -97,7 +123,7 @@ const MyPage = () => {
                 <TextField id="outlined-basic"
                     label="Movie Title"
                     variant="outlined"
-                    value={enteredTitle}
+                    value={stateTitle.name}
                     style={{ marginTop: '20px', marginBottom: '20px' }}
                     onChange={(e) => { handleInput1(e) }} />
 
